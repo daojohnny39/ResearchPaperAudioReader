@@ -1,0 +1,208 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+
+/* Research Paper Audio Reader — calm dark reading theme (PLAN §6).
+   Dark is the default (html.dark is set in index.html); a light palette
+   is defined under :root for an optional future light mode. */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+    /* shadcn semantic color mappings */
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+
+    /* App-specific surfaces + spoken-sentence highlight (PLAN §6) */
+    --color-surface: var(--surface);
+    --color-surface-2: var(--surface-2);
+    --color-highlight: var(--highlight);
+    --color-highlight-fill: var(--highlight-fill);
+    --color-highlight-border: var(--highlight-border);
+
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Light palette (optional future light mode). */
+:root {
+    --background: #FAFAF8;
+    --foreground: #1A1D23;
+    --surface: #FFFFFF;
+    --surface-2: #F1F1EE;
+    --card: #FFFFFF;
+    --card-foreground: #1A1D23;
+    --popover: #FFFFFF;
+    --popover-foreground: #1A1D23;
+    --primary: #2DD4BF;
+    --primary-foreground: #04201D;
+    --secondary: #F1F1EE;
+    --secondary-foreground: #1A1D23;
+    --muted: #F1F1EE;
+    --muted-foreground: #5B6470;
+    --accent: #F1F1EE;
+    --accent-foreground: #1A1D23;
+    --destructive: #DC2626;
+    --destructive-foreground: #FFFFFF;
+    --border: #E3E3DE;
+    --input: #E3E3DE;
+    --ring: #2DD4BF;
+    --highlight: #F5B252;
+    --highlight-fill: rgba(245, 178, 82, 0.28);
+    --highlight-border: #E59B2E;
+    --chart-1: #2DD4BF;
+    --chart-2: #38BDF8;
+    --chart-3: #F5B252;
+    --chart-4: #A78BFA;
+    --chart-5: #F87171;
+    --radius: 0.625rem;
+    --sidebar: #FFFFFF;
+    --sidebar-foreground: #1A1D23;
+    --sidebar-primary: #2DD4BF;
+    --sidebar-primary-foreground: #04201D;
+    --sidebar-accent: #F1F1EE;
+    --sidebar-accent-foreground: #1A1D23;
+    --sidebar-border: #E3E3DE;
+    --sidebar-ring: #2DD4BF;
+}
+
+/* Dark palette — the default reading experience (PLAN §6). */
+.dark {
+    --background: #0F1115;
+    --foreground: #E6E8EC;
+    --surface: #161A20;
+    --surface-2: #1E232B;
+    --card: #161A20;
+    --card-foreground: #E6E8EC;
+    --popover: #161A20;
+    --popover-foreground: #E6E8EC;
+    --primary: #2DD4BF;
+    --primary-foreground: #04201D;
+    --secondary: #1E232B;
+    --secondary-foreground: #E6E8EC;
+    --muted: #1E232B;
+    --muted-foreground: #9AA3AF;
+    --accent: #1E232B;
+    --accent-foreground: #E6E8EC;
+    --destructive: #F87171;
+    --destructive-foreground: #1A0B0B;
+    --border: #2A2F38;
+    --input: #2A2F38;
+    --ring: #2DD4BF;
+    --highlight: #F5B252;
+    --highlight-fill: rgba(245, 178, 82, 0.22);
+    /* The highlight overlays the rendered PDF (usually white paper), so the
+       border needs a crisp amber edge that reads on a light surface — a pale
+       #F5B252 line washes out on white. */
+    --highlight-border: #E0901F;
+    --chart-1: #2DD4BF;
+    --chart-2: #38BDF8;
+    --chart-3: #F5B252;
+    --chart-4: #A78BFA;
+    --chart-5: #F87171;
+    --sidebar: #161A20;
+    --sidebar-foreground: #E6E8EC;
+    --sidebar-primary: #2DD4BF;
+    --sidebar-primary-foreground: #04201D;
+    --sidebar-accent: #1E232B;
+    --sidebar-accent-foreground: #E6E8EC;
+    --sidebar-border: #2A2F38;
+    --sidebar-ring: #2DD4BF;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  html {
+    @apply font-sans;
+  }
+  /* App shell fills the window; views manage their own internal scroll. */
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    overflow: hidden;
+  }
+  /* Tabular figures for timers / progress readouts (PLAN §6). */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+  /* Native scrollbars (e.g. PdfViewer's overflow-auto pane). The default
+     overlay thumb blends into the dark surfaces; give it a visible pill that
+     reads against the background. */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--muted-foreground) 55%, transparent);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--muted-foreground);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

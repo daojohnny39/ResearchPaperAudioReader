@@ -1,0 +1,11 @@
+{
+  "name": "rpar-sidecar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bundled Node sidecar for Kokoro neural TTS (runs out of the WKWebView). Has its own node_modules so the packaged .app is self-contained.",
+  "main": "kokoro-server.mjs",
+  "dependencies": {
+    "kokoro-js": "1.2.1"
+  }
+}

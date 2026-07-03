@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0F1115"/>
+      <stop offset="1" stop-color="#161A20"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="258" y1="268" x2="610" y2="756" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E6E8EC"/>
+      <stop offset="1" stop-color="#D7DBE1"/>
+    </linearGradient>
+    <radialGradient id="tealGlow" cx="700" cy="516" r="230" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2DD4BF" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#2DD4BF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- App tile -->
+  <rect x="0" y="0" width="1024" height="1024" rx="210" ry="210" fill="url(#bg)"/>
+
+  <!-- Soft teal glow where the page speaks -->
+  <circle cx="700" cy="516" r="230" fill="url(#tealGlow)"/>
+
+  <!-- Sound-wave arcs radiating from the page's right edge -->
+  <g fill="none" stroke="#2DD4BF" stroke-width="30" stroke-linecap="round">
+    <path d="M662.71 453.19 A82 82 0 0 1 662.71 578.81"/>
+    <path d="M701.28 407.22 A142 142 0 0 1 701.28 624.78"/>
+    <path d="M739.85 361.26 A202 202 0 0 1 739.85 670.74"/>
+  </g>
+
+  <!-- Paper sheet with diagonal cut for the folded corner -->
+  <path d="M288 268 H518 L610 360 V726 Q610 756 580 756 H288 Q258 756 258 726 V298 Q258 268 288 268 Z" fill="url(#paper)"/>
+
+  <!-- Folded corner flap -->
+  <path d="M518 268 L610 360 L518 360 Z" fill="#9AA3AF"/>
+
+  <!-- Text lines; the third bar is amber = the spoken sentence highlight -->
+  <g>
+    <rect x="300" y="405" width="270" height="28" rx="14" fill="#9AA3AF"/>
+    <rect x="300" y="470" width="240" height="28" rx="14" fill="#9AA3AF"/>
+    <rect x="300" y="535" width="270" height="28" rx="14" fill="#F5B252"/>
+    <rect x="300" y="600" width="200" height="28" rx="14" fill="#9AA3AF"/>
+  </g>
+</svg>
